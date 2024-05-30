@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import Login from "./components/Login";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+	const recaptchaSiteKey: string =
+		process.env.REACT_APP_RECAPTCHA_SITE_KEY || "reCAPTCHA_SITE_KEY";
+
+	return (
+		<GoogleReCaptchaProvider reCaptchaKey={recaptchaSiteKey}>
+			<div className="App">
+				<Login />
+			</div>
+		</GoogleReCaptchaProvider>
+	);
+};
 
 export default App;
