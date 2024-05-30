@@ -7,7 +7,7 @@ const App: React.FC = () => {
 		process.env.REACT_APP_RECAPTCHA_SITE_KEY || "reCAPTCHA_SITE_KEY";
 
 	return (
-		<GoogleReCaptchaProvider reCaptchaKey={recaptchaSiteKey}>
+		<GoogleReCaptchaProvider reCaptchaKey={recaptchaSiteKey} useEnterprise={true}>
 			<div className="App">
 				<Login />
 			</div>
