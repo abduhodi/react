@@ -21,17 +21,16 @@ const Login: React.FC = () => {
 			const response = await axios.post(
 				"http://localhost:8080/api/student/signup",
 				{ login: email, password, firstName: "Abduhodi", loginType: "email" },
-				{ headers: { recaptcha: recaptchaToken } }
+				{ headers: { recaptcha: recaptchaToken, sitekey: process.env.REACT_APP_RECAPTCHA_SITE_KEY } }
 			);
-			console.log(response.data);
-			if(response?.data?.status){
+
+			if(response?.status){
 				setMessage("Login successful");
 			}
 			else{
 				setMessage("Login failed");
 			}
 		} catch (error) {
-			console.log(error);
 			setMessage("Login failed");
 		} finally {
 			setSubmitEnabled(true);
